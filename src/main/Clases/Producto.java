@@ -36,12 +36,25 @@ public class Producto {
         this.numVentas = numVentas;
     }
 
+    public void addVentas(int numVentas){
+        this.numVentas+= numVentas;
+    }
+
     public int getStock() {
         return stock;
     }
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+
+    public void subtractSock(int cantidad){
+
+        if(cantidad > this.stock){
+            //log error
+        }else
+        this.stock-= cantidad;
     }
 
     public float getPrecio() {

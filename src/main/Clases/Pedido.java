@@ -10,12 +10,13 @@ import main.Clases.Producto;
 public class Pedido {
 
     private HashMap<String, Integer> mapPedido = new HashMap<>();
-    private String id;
+    private List<String> productos = new ArrayList<>();
+    private int id;
 
 
 
-   public Pedido(String nombre){
-       this.id = nombre;
+   public Pedido(){
+       this.id = 0;
    }
 
    public void addProduct(String producto, int cantidad){
@@ -24,6 +25,7 @@ public class Pedido {
        String product = producto.toLowerCase();// por si se equivoca y escribe el key value en mayusculas
 
        this.mapPedido.put(product,cantidad);
+       this.productos.add(producto);
 
    }
 
@@ -45,11 +47,19 @@ public class Pedido {
         this.mapPedido = mapPedido;
 
     }
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public List<String> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<String> productos) {
+        this.productos = productos;
     }
 }
