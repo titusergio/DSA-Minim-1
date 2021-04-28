@@ -1,9 +1,9 @@
 package edu.upc.eetac.dsa;
 
 //import junit para el test
-import edu.upc.eetac.dsa.Clases.Pedido;
-import edu.upc.eetac.dsa.Clases.Producto;
-import edu.upc.eetac.dsa.Clases.Usuario;
+import edu.upc.eetac.dsa.Models.Pedido;
+import edu.upc.eetac.dsa.Models.Producto;
+import edu.upc.eetac.dsa.Models.Usuario;
 import org.junit.Before;        //porq no me salia antes de escribir before
 import org.junit.After;
 import org.junit.Test;
@@ -12,15 +12,6 @@ import org.junit.Assert;
 
 //import logger para mensajes
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
-
-
-
-import java.util.*;
-
-
-
-
 
 
 public class ProductManagerImplTest {
@@ -46,7 +37,7 @@ public class ProductManagerImplTest {
 
         //log4j properties????????????
 
-        manager = ProductManagerImpl.getInstance();   //es correcto??????
+        manager = ProductManagerImpl.getInstance();   //es correcto??????   sii!!!
 
         producto1 = new Producto("cocacola",10,2.3);
         producto2 = new Producto("pan",10,1.5);

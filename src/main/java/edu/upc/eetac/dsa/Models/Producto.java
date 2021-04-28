@@ -1,4 +1,4 @@
-package edu.upc.eetac.dsa.Clases;
+package edu.upc.eetac.dsa.Models;
 
 public class Producto {
 
@@ -13,6 +13,10 @@ public class Producto {
         this.numVentas = 0;
         this.stock = stock;
         this.precio = precio;
+    }
+
+    public Producto(){
+
     }
 
 

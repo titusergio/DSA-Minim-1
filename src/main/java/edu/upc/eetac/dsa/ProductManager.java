@@ -1,10 +1,8 @@
 package edu.upc.eetac.dsa;
 
-import edu.upc.eetac.dsa.Clases.Pedido;
-import edu.upc.eetac.dsa.Clases.Producto;
-import edu.upc.eetac.dsa.Clases.Usuario;
-import edu.upc.eetac.dsa.Clases.Pedido;
-import edu.upc.eetac.dsa.Clases.Producto;   //es necessario importar??
+import edu.upc.eetac.dsa.Models.Pedido;
+import edu.upc.eetac.dsa.Models.Producto;
+import edu.upc.eetac.dsa.Models.Usuario;
 
 
 import java.util.List;

@@ -1,9 +1,9 @@
 package edu.upc.eetac.dsa;
 
 
-import edu.upc.eetac.dsa.Clases.Pedido;
-import edu.upc.eetac.dsa.Clases.Producto;
-import edu.upc.eetac.dsa.Clases.Usuario;
+import edu.upc.eetac.dsa.Models.Pedido;
+import edu.upc.eetac.dsa.Models.Producto;
+import edu.upc.eetac.dsa.Models.Usuario;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,7 +22,7 @@ public class ProductManagerImpl implements ProductManager {
 
 
     private ProductManagerImpl(){
-        //lo tendriamos q hacer aqui???
+       //millor aqui!!!!
     }
 
     //Singleton
@@ -55,6 +55,7 @@ public class ProductManagerImpl implements ProductManager {
     @Override
     public void addPedido(Pedido pedido) {
 
+
     }
 
     @Override
@@ -64,7 +65,7 @@ public class ProductManagerImpl implements ProductManager {
         Collections.sort(p, new Comparator<Producto>() {
             @Override
             public int compare(Producto o1, Producto o2) {
-                return Double.compare(o1.getPrecio(), o2.getPrecio());    //porq asi??
+                return Double.compare(o1.getPrecio(), o2.getPrecio());    //porq asi??  vv
             }
 
         });
@@ -95,8 +96,9 @@ public class ProductManagerImpl implements ProductManager {
 
         //usuario registro pedidos -> user.addPedido(pedido)
         // añadir a la cola
+        //
 
-        // !!!!!!!!!!!!!!q es mejor pasarle el objeto usuario enterio, o solo el identificador y construir el objeto usuario dentro??
+        // !!!!!!!!!!!!!! ha de ser string i no un objecte
 
 
 
@@ -180,6 +182,13 @@ public class ProductManagerImpl implements ProductManager {
         listaProductos.clear();
         usuarios.clear();
         colaPedidos.clear();
+
+    }
+
+    public Collection<Usuario> getUsuariosSistema(){
+
+        return (Collection<Usuario>) usuarios.values();
+
 
     }
 }

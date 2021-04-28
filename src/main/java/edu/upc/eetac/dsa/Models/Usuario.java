@@ -1,4 +1,4 @@
-package edu.upc.eetac.dsa.Clases;
+package edu.upc.eetac.dsa.Models;
 
 import java.util.ArrayList;
 import java.util.List;
