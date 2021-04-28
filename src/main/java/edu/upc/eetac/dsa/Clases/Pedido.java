@@ -1,22 +1,29 @@
-package main.Clases;
+package edu.upc.eetac.dsa.Clases;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-
-import main.Clases.Producto;
 
 public class Pedido {
 
     private HashMap<String, Integer> mapPedido = new HashMap<>();
     private List<String> productos = new ArrayList<>();
     private int id;
+    private int user;
 
 
 
    public Pedido(){
        this.id = 0;
+       this.user=0;
+   }
+
+   public void setUser(int user){
+       this.user=user;
+   }
+
+   public int getUser(){
+       return this.user;
    }
 
    public void addProduct(String producto, int cantidad){

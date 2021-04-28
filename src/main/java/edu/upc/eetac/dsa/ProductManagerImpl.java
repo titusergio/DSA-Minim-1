@@ -1,8 +1,9 @@
-package main;
+package edu.upc.eetac.dsa;
 
-import main.Clases.Pedido;
-import main.Clases.Producto;
-import main.Clases.Usuario;
+
+import edu.upc.eetac.dsa.Clases.Pedido;
+import edu.upc.eetac.dsa.Clases.Producto;
+import edu.upc.eetac.dsa.Clases.Usuario;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,15 +25,46 @@ public class ProductManagerImpl implements ProductManager {
         //lo tendriamos q hacer aqui???
     }
 
+    //Singleton
+    public static ProductManager getInstance(){
+        if(instance == null) {
+            instance = new ProductManagerImpl();
+        }
+        return instance;
+    }
+
+    public void addProducto(Producto p){
+
+        listaProductos.add(p);
+    }
+
+    public void addUser(Integer id, Usuario u){
+
+        usuarios.put(id,u);
+        u.setId(id);
+    }
+
+    public Queue<Pedido> getColaPedidos(){
+        return colaPedidos;
+    }
+
+    public List<Producto> getListaProductos() {
+        return listaProductos;
+    }
+
+    @Override
+    public void addPedido(Pedido pedido) {
+
+    }
 
     @Override
     public List<Producto> getProductsPrice() {
 
-        List<Producto> p = this.listaProductos;
+        List<Producto> p = listaProductos;
         Collections.sort(p, new Comparator<Producto>() {
             @Override
             public int compare(Producto o1, Producto o2) {
-                return Float.compare(o1.getPrecio(), o2.getPrecio());    //porq asi??
+                return Double.compare(o1.getPrecio(), o2.getPrecio());    //porq asi??
             }
 
         });
@@ -43,7 +75,7 @@ public class ProductManagerImpl implements ProductManager {
     @Override
     public List<Producto> getProductsSales() {
 
-        List<Producto> p = this.listaProductos;
+        List<Producto> p = listaProductos;
         Collections.sort(p, new Comparator<Producto>() {
             @Override
             public int compare(Producto o1, Producto o2) {
@@ -64,7 +96,7 @@ public class ProductManagerImpl implements ProductManager {
         //usuario registro pedidos -> user.addPedido(pedido)
         // añadir a la cola
 
-        // q es mejor pasarle el objeto usuario enterio, o solo el identificador y construir el objeto usuario dentro??
+        // !!!!!!!!!!!!!!q es mejor pasarle el objeto usuario enterio, o solo el identificador y construir el objeto usuario dentro??
 
 
 
@@ -74,9 +106,13 @@ public class ProductManagerImpl implements ProductManager {
 
          }else{
              pedido.setId(contador);  //identificamos el pedido
-             this.contador++;
+             contador++;
 
-             this.colaPedidos.add(pedido);    //si el usuario esta en el sistema, añadimos el pedido al registro de pedidos
+             pedido.setUser(usuario.getId());
+
+
+
+             colaPedidos.add(pedido);    //si el usuario esta en el sistema, añadimos el pedido al registro de pedidos
              usuario.addPedido(pedido);//del usuario y al registro de pedidos del sistema
 
          }
@@ -90,7 +126,7 @@ public class ProductManagerImpl implements ProductManager {
         //remove de la cola pedidos por atender
         // incrementar numero de ventas de cada objeto del pedido y decrementamos el num de stock
 
-        Pedido pedidoAtender = this.colaPedidos.poll();  //cogemos el pedido de la cola
+        Pedido pedidoAtender = colaPedidos.poll();  //cogemos el pedido de la cola
 
         //bucle de productos de mi pedido--> para cada producto buscar este en mi lista y modificar un valor
         List<String> nombreProductos = pedidoAtender.getProductos();  //obtenemos la lista con los nombres de los productos
@@ -135,8 +171,15 @@ public class ProductManagerImpl implements ProductManager {
     @Override
     public List<Pedido> getProductos(Integer idUser) {
 
-        Usuario u = this.usuarios.get(idUser);
+        Usuario u = usuarios.get(idUser);
         return u.getPedidosUser();
+
+    }
+
+    public void clearInstances(){
+        listaProductos.clear();
+        usuarios.clear();
+        colaPedidos.clear();
 
     }
 }

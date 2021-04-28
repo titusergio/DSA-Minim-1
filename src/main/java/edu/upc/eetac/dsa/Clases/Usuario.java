@@ -1,8 +1,8 @@
-package main.Clases;
+package edu.upc.eetac.dsa.Clases;
 
 import java.util.ArrayList;
 import java.util.List;
-import main.Clases.Pedido;
+
 
 
 public class Usuario {
