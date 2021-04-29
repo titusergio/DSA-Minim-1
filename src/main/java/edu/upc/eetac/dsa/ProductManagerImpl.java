@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.*;
 
+import org.apache.log4j.Logger;
+
 
 public class ProductManagerImpl implements ProductManager {
 
@@ -20,6 +22,7 @@ public class ProductManagerImpl implements ProductManager {
     private Queue<Pedido> colaPedidos = new LinkedList<>();       //cola de pedidos por atender
     private int contador=0;                                       //variable q usaremos para identificar los pedidos, enumerandolos de manera ascendetne
 
+    private static Logger logger = Logger.getLogger(ProductManagerImpl.class);
 
     private ProductManagerImpl(){
        //millor aqui!!!!
@@ -53,11 +56,18 @@ public class ProductManagerImpl implements ProductManager {
     }
 
     @Override
-    public void addPedido(Pedido pedido) {
+    public Pedido addPedido(Pedido pedido) {
+
+        this.colaPedidos.add(pedido);
+        return pedido;
+
 
 
     }
 
+
+
+    //funciones requeridas para el programa y la API rest
     @Override
     public List<Producto> getProductsPrice() {
 
@@ -73,21 +83,26 @@ public class ProductManagerImpl implements ProductManager {
         return p;
     }
 
+
+
     @Override
     public List<Producto> getProductsSales() {
 
         List<Producto> p = listaProductos;
-        Collections.sort(p, new Comparator<Producto>() {
-            @Override
-            public int compare(Producto o1, Producto o2) {
-                return Integer.compare(o1.getNumVentas(), o2.getNumVentas());    //porq asi??
-            }
+        if (!p.isEmpty()) {
+            Collections.sort(p, new Comparator<Producto>() {
+                @Override
+                public int compare(Producto o1, Producto o2) {
+                    return Integer.compare(o2.getNumVentas(), o1.getNumVentas());    //porq asi??
+                }
 
-        });
+            });
 
-        return p;
+            logger.info("Lista ordenada");
+            return p;
 
 
+        }else return  null;
     }
 
 
@@ -110,7 +125,7 @@ public class ProductManagerImpl implements ProductManager {
              pedido.setId(contador);  //identificamos el pedido
              contador++;
 
-             pedido.setUser(usuario.getId());
+             pedido.setUser(usuario.getId());  //relacionamos pedido con usuario
 
 
 

@@ -5,7 +5,7 @@ public class Producto {
 
     private String nombre;
     private int numVentas;
-    private int stock;
+    private int stock;  //sin implementar
     private double precio;
 
     public Producto(String nombre, int stock, Double precio) {

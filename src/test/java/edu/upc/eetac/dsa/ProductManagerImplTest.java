@@ -111,6 +111,21 @@ public class ProductManagerImplTest {
     }
 
 
+    @Test
+    public void ordenarPorVentas(){
+        manager.newPedido(pedido1,usuario2);
+        manager.servirPedido();
+
+        Assert.assertEquals(3, manager.getProductsSales().get(0).getNumVentas());
+
+
+
+
+
+
+    }
+
+
 
    @After
 

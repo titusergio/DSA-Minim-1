@@ -15,8 +15,10 @@ public class Pedido {
 
    public Pedido(){
        this.id = 0;
-       this.user=0;
+
    }
+
+
 
    public void setUser(int user){
        this.user=user;

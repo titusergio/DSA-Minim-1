@@ -35,7 +35,8 @@ public interface ProductManager {
 
     public void addProducto(Producto p);
     public void addUser(Integer id, Usuario u);
-    public void addPedido(Pedido pedido);
+    public Pedido addPedido(Pedido pedido);
+
 
 
 
